@@ -1,19 +1,19 @@
 <div class="header">
   <nav>
     <ul>
+      <li><img src="../assets/images.jpg" height="45" width="65"/></li>
+      <li><a (click)="onShowHome()">Home</a></li>
       <li><a (click)="showStorageMenu()">Storage</a></li>
 
       <li class="dropdown">
-        <a class="dropbtn" >PLC Data</a>
+        <a class="dropbtn">PLC Data</a>
         <div class="dropdown-content">
           <a (click)="showPLCMenu()">PLC Address</a>
-          <a  (click)="showPLCDBMenu()">PLC DB</a>
+          <a (click)="showPLCDBMenu()">PLC DB</a>
           <a>spare</a>
         </div>
       </li>
-
-
-
+      <li><a (click)="showSetting()">Setting</a></li>
     </ul>
   </nav>
 </div>
@@ -22,6 +22,8 @@
 <app-plcdb-app *ngIf="onPLCDBMenu"></app-plcdb-app>
 
 <app-app-storag-area *ngIf="onStorageMenu"></app-app-storag-area>
+<app-settings *ngIf="onSetting"></app-settings>
+<app-home *ngIf="onHomePage"></app-home>
 
 
 <router-outlet></router-outlet>

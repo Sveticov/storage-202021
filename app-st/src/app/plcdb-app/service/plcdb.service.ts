@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 export class PlcdbService {
 private host:string
   constructor(private http:HttpClient) {
-  this.host='http://localhost:8080/app/plcdb'
+  this.host='http://172.20.255.254:8097/app/plcdb'
   }
 
   onCreateDB(plcDB:PLCDbData):Observable<any>{

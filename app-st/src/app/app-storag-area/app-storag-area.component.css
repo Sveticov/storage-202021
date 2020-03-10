@@ -4,9 +4,11 @@
 }
 
 .area-work {
-  margin: 2px;
-  position: absolute;
+
+  /*position: absolute;*/
   margin: 0;
+  padding: 0;
+
   width: auto;
   height: 570px;
   background: rgb(15, 15, 15);
@@ -14,6 +16,7 @@
 }
 
 .car1 {
+
   margin: 0;
   padding: 0;
   position: absolute;
@@ -22,31 +25,34 @@
 }
 
 .car1 img {
-  box-shadow: 1px 1px darkred;
+  box-shadow: 1px 1px 1px darkorange;
 }
 
 .satelit1-car1 {
-  margin: 0;
+
+  margin-top: -6px;
   padding: 0;
   position: absolute;
   top: 150px;
   left: 110px;
+  z-index: 2;
 }
 
 .satelit1-car1 img {
-  box-shadow: 1px 1px darkred;
+  box-shadow: 1px 1px 1px orangered;
 }
 
 .satelit2-car1 img {
-  box-shadow: 1px 1px darkred;
+  box-shadow: 1px 1px 1px orangered;
 }
 
 .satelit2-car1 {
-  margin: 0;
+  margin-top: 4px;
   padding: 0;
   position: absolute;
   top: 159px;
   left: 110px;
+  z-index: 2;
 }
 
 
@@ -55,7 +61,7 @@
   padding: 0;
   position: absolute;
   top: 155px;
-  left: 700px;
+  left: 747px;
 
 }
 
@@ -64,27 +70,29 @@
 }
 
 .satelit1-car2 {
-  margin: 0;
+  margin-top: -6px;
   padding: 0;
   position: absolute;
   top: 150px;
-  left: 710px;
+  left: 747px;
+  z-index: 2;
 }
 
 .satelit2-car2 {
-  margin: 0;
+  margin-top: 4px;
   padding: 0;
   position: absolute;
   top: 159px;
-  left: 710px;
+  left: 747px;
+  z-index: 2;
 }
 
 .satelit1-car2 img {
-  box-shadow: 1px 1px darkred;
+  box-shadow: 1px 1px 1px darkred;
 }
 
 .satelit2-car2 img {
-  box-shadow: 1px 1px darkred;
+  box-shadow: 1px 1px 1px darkred;
 }
 
 .wrap-board ul {
@@ -115,6 +123,9 @@
 }
 
 .wrap-board:hover .info-board {
+  display: block;
+}
+.info-board:hover .info-board{
   display: block;
 }
 
@@ -312,5 +323,15 @@
     box-shadow: 0 0 15px -1px greenyellow,
     0 0 12px -1px greenyellow inset;
   }
+}
+.rectangle{
+  margin: 0;
+  padding: 0;
+  background: silver;
+  position: absolute;
+  height: 26px;
+  width: 52px;
+  z-index: 1;
+  box-shadow: 2px 2px 2px gray;
 }
 

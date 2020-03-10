@@ -4,7 +4,7 @@
     <input list="typeDB" [(ngModel)]="plcDbData.typeDB"  name="typeDB" ngModel placeholder="type db">
     <datalist id="typeDB">
       <option value="INT">INT</option>
-      <option value="BYTE">BYTE</option>
+      <option value="BOOL">BOOL</option>
     </datalist>
     <input type="number"  [(ngModel)]="plcDbData.dbAdr"  name="dbAdr" ngModel placeholder="address db">
     <input type="number"  [(ngModel)]="plcDbData.dbByte"  name="dbByte" ngModel placeholder="byte db">
@@ -15,7 +15,13 @@
 </div>
 <div class="dbplc-info">
   <div *ngFor="let plcdb of plcDBDataAll">
-    <div class="info-db">{{plcdb|json}}
+    <div class="info-db">
+      <p>id: {{plcdb.idDB}}</p>
+      <p>plc: {{plcdb.plcName}}</p>
+      <p>TYPE: {{plcdb.typeDB}}</p>
+      <p>DB: {{plcdb.dbAdr}}</p>
+      <p>BYTE: {{plcdb.dbByte}}</p>
+      <p>BIT: {{plcdb.dbBit}}</p>
     <button (click)="onDeletePLCDB(plcdb.idDB)">Delete</button>
     </div>
   </div>

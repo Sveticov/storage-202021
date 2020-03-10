@@ -38,7 +38,7 @@ public class PLCService implements ModelService<PLCData,Integer>{
     }
 
     @Override
-    public PLCData getModelBuID(Integer id) {
+    public PLCData getModelByID(Integer id) {
         PLCData plcData=plcRepository.findById(id).orElse(null);
         return plcData;
     }

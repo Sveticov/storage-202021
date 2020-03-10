@@ -9,6 +9,7 @@
   justify-content: center;
   background-color: #333333;
   border: 1px solid orangered;
+  opacity: 90%;
 }
 form{
   margin: 5px;
@@ -31,10 +32,16 @@ button{
   justify-content: center;
   background-color: #333333;
   border: 1px solid orangered;
+  opacity: 90%;
 }
 .info-db{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin: 2px;
+}
+.info-db p{
+  margin: 3px;
+  padding: 1px;
+  border-bottom: 1px solid orangered;
 }

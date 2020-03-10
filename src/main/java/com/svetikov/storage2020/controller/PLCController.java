@@ -1,20 +1,18 @@
 package com.svetikov.storage2020.controller;
 
+import com.svetikov.storage2020.component.CarBoardComponent;
 import com.svetikov.storage2020.component.PLCComponent;
-import com.svetikov.storage2020.models.BoardBox;
-import com.svetikov.storage2020.models.PLCData;
-import com.svetikov.storage2020.models.PLCDbData;
+import com.svetikov.storage2020.models.*;
 import com.svetikov.storage2020.service.ModelService;
+import com.svetikov.storage2020.service.ServiceCarPosition;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,21 +27,30 @@ public class PLCController {
     private final ModelService<BoardBox, Long> boardService;
 
     private final PLCComponent plcComponent;
+    private final CarBoardComponent carBoardComponent;
 
     private final ModelService<PLCDbData, Integer> plcDbService;
+    private final ServiceCarPosition<CarOne> carOneServiceCarPosition;
+    private final ServiceCarPosition<CarTwo> carTwoServiceCarPosition;
 
     private List<PLCDbData> plcDbDataSet;
-    private PLCData plcData1;
+    private  PLCData plcData1;
 
     @Autowired
     public PLCController(@Qualifier("plc") ModelService<PLCData, Integer> plcRepository,
                          @Qualifier("board") ModelService<BoardBox, Long> boardRepository,
                          PLCComponent plcComponent,
-                         @Qualifier("db") ModelService plcDbDataIntegerModelService) {
+                         CarBoardComponent carBoardComponent,
+                         @Qualifier("db") ModelService plcDbDataIntegerModelService,
+                         @Qualifier("car1") ServiceCarPosition carOneServiceCarPosition,
+                         @Qualifier("car2") ServiceCarPosition carTwoServiceCarPosition) {
         this.plcService = plcRepository;
         this.boardService = boardRepository;
         this.plcComponent = plcComponent;
+        this.carBoardComponent=carBoardComponent;
         this.plcDbService = plcDbDataIntegerModelService;
+        this.carOneServiceCarPosition=carOneServiceCarPosition;
+        this.carTwoServiceCarPosition=carTwoServiceCarPosition;
     }
 
 //    @GetMapping("/1")
@@ -70,8 +77,6 @@ public class PLCController {
     @PostMapping("/plc/newplc")
     public ResponseEntity<List<PLCData>> newPLCData(@RequestBody PLCData plcData) {
 
-     //   if(!plcDbDataSet.isEmpty())plcDbDataSet.clear();
-
         log.info("plcData " + plcData.toString());
 
         if (plcData.getAdrIP().equals(null) & plcData.getDbRead() == 0)
@@ -81,29 +86,18 @@ public class PLCController {
         if (!plcService.getAllModel().isEmpty()) {
 
 
-                plcData1 = plcService.getAllModel().stream()
-                        .filter(plc -> plc.getPlcName().equals(plcData.getPlcName()))
-                        .findFirst()
-                        .orElse(new PLCData("","",-1,-1,-1,
-                                -1,-1,-1,null));
-//String plcName=plcService.getAllModel().stream()
-//        .filter(plc->plc.getPlcName().equals(plcData.getPlcName()))
-//        .map(PLCData::getPlcName)
-//        .findAny()
-//        .orElse("");
-
-
+            plcData1 = plcService.getAllModel().stream()
+                    .filter(plc -> plc.getPlcName().equals(plcData.getPlcName()))
+                    .findFirst()
+                    .orElse(new PLCData("", "", -1, -1, -1,
+                            -1, -1, -1, null));
 
 
 
             if (plcData1.getPlcName().equals(plcData.getPlcName())) {
-//            if(plcName.equals(plcData.getPlcName())){
-
                 plcService.deleteModel(plcData1.getId());
             }
         }
-
-        log.info("!plcDbService.getAllModel().isEmpty() " + plcDbService.getAllModel().isEmpty());
 
         if (!plcDbService.getAllModel().isEmpty()) {
 
@@ -115,14 +109,11 @@ public class PLCController {
                 log.info("!plcDbDataSet.isEmpty() " + plcDbDataSet.isEmpty());
                 plcData.setPlcDbData(plcDbDataSet);
 
-
             } else {
                 plcData.setPlcDbData(null);
             }
         }
-
         plcService.saveModel(plcData);
-
 
         return new ResponseEntity<>(plcService.getAllModel(), HttpStatus.OK);
     }
@@ -134,15 +125,20 @@ public class PLCController {
 
     @GetMapping("/plc/delete/{id}")
     public ResponseEntity<List<PLCData>> deletePLC(@PathVariable("id") int id) {
-        PLCData plcData = plcService.getModelBuID(id);
+        PLCData plcData = plcService.getModelByID(id);
         plcService.deleteModel(id);
         return new ResponseEntity<>(plcService.getAllModel(), HttpStatus.OK);
     }
 
+    // TODO: 2/6/2020 connect to plc 
     @GetMapping("/plc/connect/{id}")
     public ResponseEntity<Boolean> plcConnect(@PathVariable("id") int id) throws Exception {
         log.info("connect plc");
-        plcComponent.onInitPLC();
+        plcComponent.onInitPLC(id);
+        carBoardComponent.onInitData(id);
+
+
+
         return new ResponseEntity<>(plcComponent.getPlc().connected, HttpStatus.OK);
     }
 

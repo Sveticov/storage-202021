@@ -1,17 +1,18 @@
 <!--[ngStyle]="{'with':windowX+'px','height':windowY}"-->
 <div class="area-work" [ngStyle]="{'width':windowX,'height':windowY}">
-  <div class="car1" [ngStyle]="{'top':carOne.positionZ+'px'}">
+  <div class="car1" [ngStyle]="{'top':carOneModify.positionZ+'px'}">
     <img src="../assets/Car.jpg" height="21" width="48"/>
   </div>
 
-  <div class="satelit1-car1" [ngStyle]="{'top':carOne.positionZ+5+'px','left':carOne.positionX+'px'}">
+  <div class="satelit1-car1" [ngStyle]="{'top':carOneModify.positionZ+'px','left':carOneModify.positionX+'px'}">
     <img src="../assets/Satelit Car.jpg" height="7" width="47"/>
   </div>
 
-  <div class="satelit2-car1" [ngStyle]="{'top':carOne.positionZ-5+'px','left':carOne.positionX+'px'}">
+  <div class="satelit2-car1" [ngStyle]="{'top':carOneModify.positionZ+5+'px','left':carOneModify.positionX+'px'}">
     <img src="../assets/Satelit Car.jpg" height="7" width="47"/>
   </div>
-  <div class="board" *ngIf="carOne.busy" [ngStyle]="{'top':carOne.positionZ+'px','left':carOne.positionX+'px'}">
+  <div class="board" *ngIf="carOne.busy"
+       [ngStyle]="{'top':carOneModify.positionZ+'px','left':carOneModify.positionX+'px'}">
     <!--    <img src="../assets/box_boards.jpg" height="22" width="43"/>-->
   </div>
 
@@ -28,29 +29,63 @@
       <p>length: {{board.lengthBox}}</p>
       <p>width: {{board.widthBox}}</p>
       <p>quantity: {{board.quantityBox}}</p>
+      <p>x: {{board.positionXBox}}</p>
+      <p>y: {{board.positionYBox}}</p>
       <button class="btn-close" (click)="onDeleteBoard(board.idBox)">&#10008;</button>
       <button class="btn-info" (click)="onDeleteBoard(board.idBox)">&#10004;</button>
     </div>
 
   </div>
+  <div class="rectangle" style="top:114px; left: 33px"></div>
+  <div class="rectangle" style="top:153px; left: 33px"></div>
+  <div class="rectangle" style="top:191px; left: 33px"></div>
+  <div class="rectangle" style="top:229px; left: 33px"></div>
+  <div class="rectangle" style="top:267px; left: 33px"></div>
+  <div class="rectangle" style="top:305px; left: 33px"></div>
+
+  <div class="rectangle" style="top:387px; left: 33px"></div>
+  <div class="rectangle" style="top:425px; left: 33px"></div>
+  <div class="rectangle" style="top:463px; left: 33px"></div>
+  <div class="rectangle" style="top:501px; left: 33px"></div>
+  <div class="rectangle" style="top:539px; left: 33px"></div>
+  <div class="rectangle" style="top:577px; left: 33px"></div>
+
+  <div class="rectangle" style="top:114px; left: 152px;width: 586px"></div>
+  <div class="rectangle" style="top:153px; left: 152px;width: 586px"></div>
+  <div class="rectangle" style="top:191px; left: 152px;width: 586px"></div>
+  <div class="rectangle" style="top:229px; left: 152px;width: 586px"></div>
+  <div class="rectangle" style="top:267px; left: 152px;width: 586px"></div>
+  <div class="rectangle" style="top:305px; left: 152px;width: 586px"></div>
 
 
-  <div class="car2" [ngStyle]="{'top':carTwo.positionZ+'px'}">
+  <div class="car2" [ngStyle]="{'top':carTwoModify.positionZ+'px'}">
     <img src="../assets/Car.jpg" height="21" width="48"/>
   </div>
-  <div class="satelit1-car2" [ngStyle]="{'top':carTwo.positionZ+5+'px','left':carTwo.positionX+'px'}">
+  <div class="satelit1-car2" [ngStyle]="{'top':carTwoModify.positionZ+'px','left':carTwoModify.positionX+'px'}">
     <img src="../assets/Satelit Car.jpg" height="7" width="47"/>
   </div>
-  <div class="satelit2-car2" [ngStyle]="{'top':carTwo.positionZ-5+'px','left':carTwo.positionX+'px'}">
+  <div class="satelit2-car2" [ngStyle]="{'top':carTwoModify.positionZ+5+'px','left':carTwoModify.positionX+'px'}">
     <img src="../assets/Satelit Car.jpg" height="7" width="47"/>
   </div>
-  <div class="board" *ngIf="carTwo.busy" [ngStyle]="{'top':carTwo.positionZ+'px','left':carTwo.positionX+'px'}">
+  <div class="board" *ngIf="carTwo.busy"
+       [ngStyle]="{'top':carTwoModify.positionZ+'px','left':carTwoModify.positionX+'px'}">
     <!--    <img src="../assets/box_boards.jpg" height="22" width="43"/>-->
   </div>
 
-  <button (click)="onPositionCarOne()">car1</button>
-  <button (click)="onPositionCarTwo()">car2</button>
-  <button (click)="onTestBoardStandStillCarOne()">board car1</button>
+  <!--  <button (click)="onPositionCarOne()">car1</button>-->
+  <!--  <button (click)="onPositionCarTwo()">car2</button>-->
+  <!--  <button (click)="onTestBoardStandStillCarOne()">board car1</button>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p>11111111111111111111111111111</p>-->
+  <!--  <p style="color: white">y: {{carOneModify.positionZ}}</p>-->
+  <!--  <p style="color: white">x: {{carOneModify.positionX}}</p>-->
+  <!--  <p> x: {{offsetX}} / z: {{offsetZ}}</p>-->
 
 </div>
 

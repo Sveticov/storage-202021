@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 export class BoardService {
  host:string
   constructor(private http:HttpClient) {
-    this.host='http://localhost:8080/app/storage/board/'
+    this.host='http://172.20.255.254:8097/app/storage/board/'
   }
 
   onTestBoard(x:number,z:number):Observable<any>{
@@ -17,5 +17,7 @@ export class BoardService {
   onDeleteBoardBuId(id:number):Observable<any>{
    return this.http.get(this.host+'delete/'+id)
   }
-
+ onShowStorage():Observable<any>{
+   return this.http.get(this.host+'/all')
+ }
 }

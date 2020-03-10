@@ -11,7 +11,7 @@ export class AppPlcServiceService {
   private readonly host:string
 
   constructor(private http: HttpClient) {
-    this.host = 'http://localhost:8080/app/plc/'
+    this.host = 'http://172.20.255.254:8097/app/plc/'
   }
 
   onAddNewPLC(plc:PLCData):Observable<any>{

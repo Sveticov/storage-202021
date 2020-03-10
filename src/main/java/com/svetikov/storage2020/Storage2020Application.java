@@ -64,8 +64,8 @@ public class Storage2020Application implements CommandLineRunner {
 //modelBoxService.saveModel(boardBox);
 
 
-serviceCarPosition1.setPositionCar(120,340);
-serviceCarPosition2.setPositionCar(700,600);
+serviceCarPosition1.setPositionCar(120,340,false);
+serviceCarPosition2.setPositionCar(700,600,false);
 
 
     }

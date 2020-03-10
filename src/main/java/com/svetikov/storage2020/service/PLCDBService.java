@@ -27,7 +27,7 @@ public class PLCDBService implements ModelService<PLCDbData, Integer> {
     }
 
     @Override
-    public PLCDbData getModelBuID(Integer id) {
+    public PLCDbData getModelByID(Integer id) {
         log.info("get id"+plcdbRepository.findById(id).orElseGet(null));
         return plcdbRepository.findById(id).orElseGet(null);
     }

@@ -29,13 +29,34 @@
 
 </form>
 
-  <div>
-    <ul *ngFor="let plc of plcDataAll">
-      <li>{{plc|json}}
+  <div class="info-plc">
+    <div *ngFor="let plc of plcDataAll">
+      <div class="info-plc-plc">
+<!--        {{plc|json}}-->
+        <p>id: {{plc.id}}</p>
+        <p>name: {{plc.plcName}}</p>
+        <p>ip: {{plc.adrIP}}</p>
+        <p>DB Read BYTE: {{plc.lengthRead}}</p>
+        <p>DB Write BYTE: {{plc.lengthWrite}}</p>
+        <p>DB Read: {{plc.dbRead}}</p>
+        <p>DB Write: {{plc.dbWrite}}</p>
+        <p>rack: {{plc.rack}}</p>
+        <p>slot: {{plc.slot}}</p>
+
+        <div *ngFor="let db of plc.plcDbData">
+          <div class="info-plc-db">
+            <p>id: {{db.idDB}}</p>
+            <p>plc: {{db.plcName}}</p>
+            <p>DB: {{db.dbAdr}}</p>
+            <p>type: {{db.typeDB}}</p>
+            <p>BYTE: {{db.dbByte}}</p>
+            <p>BIT: {{db.dbBit}}</p>
+          </div>
+        </div>
       <button (click)="onDeletePLC(plc.id)">Delete</button>
       <button (click)="onConnectPLC(plc.id)" [ngStyle]="{'background-color':colorBtnConnect}">Connect</button>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>
 <!--<div>-->

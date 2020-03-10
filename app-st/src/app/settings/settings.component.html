@@ -1,0 +1,30 @@
+<div class="box-set1">
+  <div class="setting-data">
+    <form #settingForm="ngForm" (ngSubmit)=settingSubmit(settingForm)>
+      <input type="number" [(ngModel)]="settingsST.carBusyOffsetX" name="carBusyOffsetX" ngModel
+             placeholder="car offset x">
+      <input type="number" [(ngModel)]="settingsST.carBusyOffsetZ" name="carBusyOffsetZ" ngModel
+             placeholder="car offset z">
+      <input type="number" [(ngModel)]="settingsST.storageXOffset" name="storageXOffset" ngModel
+             placeholder="x offset ">
+      <input type="number" [(ngModel)]="settingsST.storageZOffset" name="storageZOffset" ngModel
+             placeholder="z offset ">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<div class="box-set2">
+  <div class="set-info">
+    <div class="set-info-box" *ngFor="let settingsl of settingsBack">
+      <div><p>idSettings: {{settingsl.idSettings}}</p></div>
+      <div><p>carBusyOffset: {{settingsl.carBusyOffsetX}}</p></div>
+      <div><p>carBusyOffset: {{settingsl.carBusyOffsetZ}}</p></div>
+      <div><p>storageXOffset: {{settingsl.storageXOffset}}</p></div>
+      <div><p>storageZOffset: {{settingsl.storageZOffset}}</p></div>
+      <div>
+        <button (click)="deleteSetting(settingsl.idSettings)">Delete</button>
+        <button (click)="okSetting(settingsl.idSettings)">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ import java.util.List;
 public interface ModelService<T,ID> {
     T saveModel(T t);
 
-    T getModelBuID(ID id);
+    T getModelByID(ID id);
 
     List<T> getAllModel();
 

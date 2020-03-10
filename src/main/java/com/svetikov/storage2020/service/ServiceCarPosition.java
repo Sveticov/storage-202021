@@ -7,8 +7,10 @@ import si.trina.moka7.live.PLC;
 public interface ServiceCarPosition<T extends  Car> {
     void setPos();
 
-    void setPositionCar(int pos_x, int pos_z);
+    void setPositionCar(int pos_x, int pos_z,boolean busy);
 
     T getPositionCar();
+
+
 
 }

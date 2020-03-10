@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/app/car")
 public class CarController {
 
-    private ServiceCarPosition carOneServiceCarPosition;
+    private final ServiceCarPosition carOneServiceCarPosition;
 
-    private ServiceCarPosition carTwoServiceCarPosition;
+    private final ServiceCarPosition carTwoServiceCarPosition;
 
     @Autowired
     public CarController(@Qualifier("car1") ServiceCarPosition carOneServiceCarPosition,
@@ -25,23 +25,25 @@ public class CarController {
         this.carTwoServiceCarPosition = carTwoServiceCarPosition;
     }
 
-    @GetMapping("/test1/{x}/{z}")
-    public void setPOS_TEST(@PathVariable("x")int x,@PathVariable("z")int z){
-        carOneServiceCarPosition.setPositionCar(x,z);
+    @GetMapping("/test1/{x}/{z}/{busy}")
+    public void setPOS_TEST(@PathVariable("x")int x,@PathVariable("z")int z,@PathVariable("busy") boolean busy){
+        carOneServiceCarPosition.setPositionCar(x,z,busy);
     }
-    @GetMapping("/test2/{x}/{z}")
-    public void setPOS2_TEST(@PathVariable("x")int x,@PathVariable("z")int z){
-        carTwoServiceCarPosition.setPositionCar(x,z);
+    @GetMapping("/test2/{x}/{z}/{busy}")
+    public void setPOS2_TEST(@PathVariable("x")int x,@PathVariable("z")int z,@PathVariable("busy") boolean busy){
+        carTwoServiceCarPosition.setPositionCar(x,z,busy);
     }
 
     @GetMapping("/car1")
     public ResponseEntity<CarOne> carPosition1() {
+      //  carOneServiceCarPosition.setPos();
         return new ResponseEntity(carOneServiceCarPosition.getPositionCar(), HttpStatus.OK);
     }
 
 
     @GetMapping("/car2")
     public ResponseEntity<CarTwo> carPosition2() {
+      //  carTwoServiceCarPosition.setPos();
         return new ResponseEntity(carTwoServiceCarPosition.getPositionCar(), HttpStatus.OK);
     }
 }

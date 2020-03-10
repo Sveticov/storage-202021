@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/app/storage/board")
 public class StorageController {
 
-    private ModelService<BoardBox, Long> modelService;
+    private final ModelService<BoardBox, Long> modelService;
 
     @Autowired
     public StorageController(@Qualifier("board") ModelService modelService) {
@@ -33,5 +33,9 @@ public class StorageController {
 
         modelService.deleteModel(id);
         return new ResponseEntity<>(modelService.getAllModel(), HttpStatus.OK);
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<BoardBox>> showAllBoards(){
+        return new ResponseEntity<>(modelService.getAllModel(),HttpStatus.OK);
     }
 }

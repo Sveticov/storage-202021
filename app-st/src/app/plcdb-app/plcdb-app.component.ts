@@ -23,6 +23,7 @@ export class PlcdbAppComponent implements OnInit {
 
   plcDbSubmit(plcForm: NgForm) {
     this.plcdbService.onCreateDB(this.plcDbData).subscribe(plcdbs => this.plcDBDataAll = plcdbs)
+
   }
 
   onAllPLCDBData() {

@@ -1,0 +1,51 @@
+.box-set1{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  opacity: 90%;
+}
+
+.box-set1 .setting-data input{
+  margin-left:7px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+
+  padding: 2px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px black;
+
+}
+
+.box-set1 .setting-data button{
+  margin-left:7px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding: 2px;
+  border-radius: 2px;
+  border: 2px solid orangered;
+  box-shadow: 2px 2px 2px black;
+}
+.box-set2{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  opacity: 90%;
+}
+.set-info-box{
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid orangered;
+  box-shadow: 2px 2px 2px black;
+}
+.set-info-box p{
+  margin: 2px;
+  font-family: Calibri;
+  color: whitesmoke;
+
+}

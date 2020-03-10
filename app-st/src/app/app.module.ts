@@ -8,13 +8,17 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AppStoragAreaComponent } from './app-storag-area/app-storag-area.component';
 import { PlcdbAppComponent } from './plcdb-app/plcdb-app.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppPlcComponent,
     AppStoragAreaComponent,
-    PlcdbAppComponent
+    PlcdbAppComponent,
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

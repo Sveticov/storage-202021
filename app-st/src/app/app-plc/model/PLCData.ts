@@ -1,3 +1,5 @@
+import {PLCDbData} from "../../plcdb-app/model/PLCDbData";
+
 export class PLCData {
 
   id:number
@@ -9,4 +11,5 @@ export class PLCData {
   dbWrite: number
   rack: number
   slot: number
+  plcDbData:PLCDbData[]
 }
