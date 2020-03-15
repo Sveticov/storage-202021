@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import si.trina.moka7.live.PLC;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,6 +38,9 @@ public class PLCController {
 
     private List<PLCDbData> plcDbDataSet;
     private  PLCData plcData1;
+    private PLCStatus plcStatus;
+    private List<PLCStatus> plcStatusList;
+
 
     @Autowired
     public PLCController(@Qualifier("plc") ModelService<PLCData, Integer> plcRepository,
@@ -51,6 +57,9 @@ public class PLCController {
         this.plcDbService = plcDbDataIntegerModelService;
         this.carOneServiceCarPosition=carOneServiceCarPosition;
         this.carTwoServiceCarPosition=carTwoServiceCarPosition;
+        plcStatus=new PLCStatus();
+        plcStatusList=new ArrayList<>();
+
     }
 
 //    @GetMapping("/1")
@@ -140,6 +149,17 @@ public class PLCController {
 
 
         return new ResponseEntity<>(plcComponent.getPlc().connected, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/plc/status")
+    public ResponseEntity<List<PLCStatus>> statusPLC(){
+       for (Map.Entry<String,PLC> plcEntry:plcComponent.statusPLC().entrySet()){
+           plcStatus.setNamePLCStatus(plcEntry.getValue().PLCName);
+           plcStatus.setStatusPLCStatus(plcEntry.getValue().connected);
+           plcStatusList.add(plcStatus);
+       }
+        return ResponseEntity.ok(plcStatusList);
     }
 
 }

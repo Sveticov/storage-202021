@@ -87,4 +87,7 @@ public class PLCComponent {
 
 
     }
+    public Map<String,PLC> statusPLC(){
+        return plcMap;
+    }
 }
