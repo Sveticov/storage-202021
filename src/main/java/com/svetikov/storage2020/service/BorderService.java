@@ -114,6 +114,7 @@ public class BorderService implements ModelService<BoardBox, Long> {
         executorService.execute(taskCSL);
     }
 
+
     public void setDataBoardSL() {
         setDataBoard(namePLCSL);
         Runnable taskSL = () -> {
