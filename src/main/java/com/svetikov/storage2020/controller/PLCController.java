@@ -152,7 +152,7 @@ public class PLCController {
     }
 
 
-    @GetMapping("/plc/status")
+    @GetMapping("/plc/status/connect")
     public ResponseEntity<List<PLCStatus>> statusPLC(){
        for (Map.Entry<String,PLC> plcEntry:plcComponent.statusPLC().entrySet()){
            plcStatus.setNamePLCStatus(plcEntry.getValue().PLCName);
